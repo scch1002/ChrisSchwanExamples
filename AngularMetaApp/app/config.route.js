@@ -42,11 +42,13 @@
             },
             {
                 url: '/droppin',
-                title: 'Drop Pin',
-                templateUrl: 'app/droppin/droppin.html',
-                settings: {
-                    nav: 3,
-                    content: '<i class="glyphicon glyphicon-globe"></i> Drop Pin'
+                config: {
+                    title: 'Drop pin',
+                    templateUrl: 'app/droppin/droppin.html',
+                    settings: {
+                        nav: 3,
+                        content: '<i class="glyphicon glyphicon-globe"></i> Drop Pin'
+                    }
                 }
             }
         ];
