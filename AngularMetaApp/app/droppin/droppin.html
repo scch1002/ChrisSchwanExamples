@@ -1,22 +1,30 @@
 ﻿<section id="droppin-view" class="mainbar" ng-controller="droppin">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-6">
             <h3>Create New Drop Pin</h3>
-            <form class="form" ng-submit="createDropPoint(newLatitude, newLongitude, newTitle)">
+            <form class="form form-horizontal" role="form" ng-submit="createDropPoint(newLatitude, newLongitude, newTitle)">
                 <div class="form-group">
-                    <label for="inputDropPinTitle">Drop Pin Title:</label>
-                    <input id="inputDropPinTitle" class="form-control" type="text" required ng-model="newTitle" />
+                    <label for="inputDropPinTitle" class="col-sm-2 control-label">Title:</label>
+                    <div class="col-sm-10">
+                        <input id="inputDropPinTitle" class="form-control" type="text" required ng-model="newTitle" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputLatitude">Latitude:</label>
-                    <input id="inputLatitude" class="form-control" type="number" required ng-model="newLatitude" />
+                    <label for="inputLatitude" class="col-sm-2 control-label">Latitude:</label>
+                    <div class="col-sm-10">
+                        <input id="inputLatitude" class="form-control" type="number" required ng-model="newLatitude" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputLongitude">Longitude:</label>
-                    <input id="inputLongitude" class="form-control" type="number" required ng-model="newLongitude" />
+                    <label for="inputLongitude" class="col-sm-2 control-label">Longitude:</label>
+                    <div class="col-sm-10">
+                        <input id="inputLongitude" class="form-control" type="number" required ng-model="newLongitude" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Create Drop Pin" />
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-primary" value="Create Drop Pin" />
+                    </div>
                 </div>
             </form>
         </div>
