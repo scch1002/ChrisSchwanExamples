@@ -12,14 +12,35 @@
             zoom: 8
         };
 
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
+        $scope.map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-    
+
         activate();
 
         function activate() {
-            common.activateController(controllerId)
+            $scope.createDropPoint = createDropPoint;
+            common.activateController(controllerId);
+        }
 
+        function createDropPoint(latitude, longitude, title) {
+
+            var latlng = new google.maps.LatLng(latitude, longitude);
+
+            var marker = new google.maps.Marker({
+                position: latlng,
+                title: title
+            });
+
+            marker.setMap($scope.map);
+
+            centerMap(latitude, longitude)
+        }
+
+        function centerMap(latitude, longitude) {
+
+            var latlng = new google.maps.LatLng(latitude, longitude);
+
+            $scope.map.setCenter(latlng);
         }
     }
 })();
