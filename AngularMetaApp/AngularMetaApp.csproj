@@ -38,8 +38,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +140,23 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <EntityDeploy Include="EntityModel\ChrisSchwanExamples.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChrisSchwanExamples.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EntityModel\ChrisSchwanExamples.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChrisSchwanExamples.edmx</DependentUpon>
+      <LastGenOutput>ChrisSchwanExamples.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityModel\ChrisSchwanExamples.edmx.diagram">
+      <DependentUpon>ChrisSchwanExamples.edmx</DependentUpon>
+    </Content>
+    <Content Include="EntityModel\ChrisSchwanExamples.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChrisSchwanExamples.edmx</DependentUpon>
+      <LastGenOutput>ChrisSchwanExamples.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\ChrisSchwanExamples - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ChrisSchwanExamples - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
@@ -156,6 +181,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DropPinController.cs" />
+    <Compile Include="EntityModel\ChrisSchwanExamples.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChrisSchwanExamples.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\ChrisSchwanExamples.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChrisSchwanExamples.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\ChrisSchwanExamples.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChrisSchwanExamples.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\DropPin.cs">
+      <DependentUpon>ChrisSchwanExamples.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,8 +221,10 @@
   <ItemGroup>
     <Folder Include="app\directives\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
