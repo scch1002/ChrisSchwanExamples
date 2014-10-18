@@ -9,8 +9,8 @@
         var log = getLogFn(controllerId);
 
         var mapOptions = {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8
+            center: { lat: 0, lng: 0},
+            zoom: 3
         };
 
         $scope.map = new google.maps.Map(document.getElementById('map-canvas'),
