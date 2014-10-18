@@ -43,7 +43,7 @@
             {
                 url: '/droppin',
                 config: {
-                    title: 'Drop pin',
+                    title: 'Drop pin admin',
                     templateUrl: 'app/droppin/droppin.html',
                     settings: {
                         nav: 3,

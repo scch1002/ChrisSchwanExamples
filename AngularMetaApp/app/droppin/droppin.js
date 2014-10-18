@@ -1,14 +1,15 @@
 ﻿(function () {
     'use strict';
-    var controllerId = 'droppin';
-    angular.module('app').controller(controllerId, ['common', 'dropPinService', '$scope', '$http', droppin]);
+    var controllerId = 'droppinCtrl';
+    angular.module('app')
+        .controller(controllerId, ['common', 'dropPinService', '$scope', droppin]);
 
-    function droppin(common, dropPinService, $scope, $http) {
+    function droppin(common, dropPinService, $scope) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
         var mapOptions = {
-            center: { lat: -34.397, lng: 150.644},
+            center: { lat: -34.397, lng: 150.644 },
             zoom: 8
         };
 
@@ -18,12 +19,20 @@
         activate();
 
         function activate() {
-            $scope.createDropPoint = createDropPoint;
+            $scope.markerList = [];
+            $scope.droppinList = [];
+            $scope.createDropPin = createDropPin;
+            $scope.deleteDropPin = deleteDropPin;
             var promises = [renderDropPins()];
             common.activateController(promises, controllerId);
         }
 
-        function createDropPoint(latitude, longitude, title) {
+        function centerMap(latitude, longitude) {
+            var latlng = new google.maps.LatLng(latitude, longitude);
+            $scope.map.setCenter(latlng);
+        };
+
+        function createDropPin(latitude, longitude, title) {
 
             var latlng = new google.maps.LatLng(latitude, longitude);
 
@@ -33,16 +42,15 @@
             });
 
             saveDropPin(latitude, longitude, title).then(function (data) {
-                marker.setMap($scope.map);
+                renderDropPins();
                 centerMap(latitude, longitude);
             });
         };
 
-        function centerMap(latitude, longitude) {
-
-            var latlng = new google.maps.LatLng(latitude, longitude);
-
-            $scope.map.setCenter(latlng);
+        function deleteDropPin(id) {
+            dropPinService.deleteDropPin(id).then(function (deletedDropPin) {
+                renderDropPins();
+            });
         };
 
         function saveDropPin(latitude, longitude, title) {
@@ -50,14 +58,21 @@
         };
 
         function renderDropPins() {
+            angular.forEach($scope.markerList, function (value, key) {
+                value.setMap(null);
+            });
+            $scope.markerList = [];
             return dropPinService.getDropPins().then(function (data) {
                 angular.forEach(data.data, function (value, key) {
-                    new google.maps.Marker({
-                        position: new google.maps.LatLng(value.Latitude, value.Longitude),
-                        title: value.Description
-                    }).setMap($scope.map);
+                    var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(value.Latitude, value.Longitude),
+                            title: value.Description
+                    });
+                    marker.setMap($scope.map);
+                    $scope.markerList.push(marker);
                 });
+                $scope.droppinList = data.data;
             });
         };
-    }
+    };       
 })();

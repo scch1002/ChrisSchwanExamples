@@ -9,7 +9,8 @@
 
         var service = {
             getDropPins: getDropPins,
-            saveDropPin: saveDropPin
+            saveDropPin: saveDropPin,
+            deleteDropPin: deleteDropPin
         };
 
         return service;
@@ -24,6 +25,10 @@
                 Longitude: longitude,
                 Description: title
             });
+        }
+
+        function deleteDropPin(id) {
+            return $http.delete('/api/DropPin/' + id);
         }
     }
 })();
