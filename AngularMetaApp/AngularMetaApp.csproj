@@ -102,6 +102,7 @@
     <Content Include="app\layout\widgetheader.html" />
     <Content Include="app\services\datacontext.js" />
     <Content Include="app\services\directives.js" />
+    <Content Include="app\services\DropPinService.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

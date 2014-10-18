@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
     var controllerId = 'droppin';
-    angular.module('app').controller(controllerId, ['common', 'datacontext', '$scope', droppin]);
+    angular.module('app').controller(controllerId, ['common', 'dropPinService', '$scope', '$http', droppin]);
 
-    function droppin(common, datacontext, $scope) {
+    function droppin(common, dropPinService, $scope, $http) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
@@ -19,7 +19,8 @@
 
         function activate() {
             $scope.createDropPoint = createDropPoint;
-            common.activateController(controllerId);
+            var promises = [renderDropPins()];
+            common.activateController(promises, controllerId);
         }
 
         function createDropPoint(latitude, longitude, title) {
@@ -31,16 +32,32 @@
                 title: title
             });
 
-            marker.setMap($scope.map);
-
-            centerMap(latitude, longitude)
-        }
+            saveDropPin(latitude, longitude, title).then(function (data) {
+                marker.setMap($scope.map);
+                centerMap(latitude, longitude);
+            });
+        };
 
         function centerMap(latitude, longitude) {
 
             var latlng = new google.maps.LatLng(latitude, longitude);
 
             $scope.map.setCenter(latlng);
-        }
+        };
+
+        function saveDropPin(latitude, longitude, title) {
+            return dropPinService.saveDropPin(latitude, longitude, title);
+        };
+
+        function renderDropPins() {
+            return dropPinService.getDropPins().then(function (data) {
+                angular.forEach(data.data, function (value, key) {
+                    new google.maps.Marker({
+                        position: new google.maps.LatLng(value.Latitude, value.Longitude),
+                        title: value.Description
+                    }).setMap($scope.map);
+                });
+            });
+        };
     }
 })();
