@@ -19,6 +19,7 @@
         activate();
 
         function activate() {
+            $scope.isCollapsed = true;
             $scope.markerList = [];
             $scope.droppinList = [];
             $scope.createDropPin = createDropPin;
