@@ -203,6 +203,7 @@ small {
 }
 
 .navbar .navbar-brand {
+    background: url(/content/images/icon.png) no-repeat left center !important;
     margin: 0 1em;
 }
 
@@ -549,8 +550,6 @@ a {
 
 /*#endregion */
 
-#map-canvas { 
+#map-canvas {
     height: 800px;
-    margin: 0; 
-    padding: 0;
 }

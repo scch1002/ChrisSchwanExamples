@@ -43,11 +43,22 @@
             {
                 url: '/droppin',
                 config: {
-                    title: 'Drop pin admin',
+                    title: 'Drop Pin',
                     templateUrl: 'app/droppin/droppin.html',
                     settings: {
                         nav: 3,
                         content: '<i class="glyphicon glyphicon-globe"></i> Drop Pin'
+                    }
+                }
+            },
+            {
+                url: '/account',
+                config: {
+                    title: 'Account',
+                    templateUrl: 'app/account/account.html',
+                    settings: {
+                        nav: 4,
+                        content: '<i class="glyphicon glyphicon-globe"></i> Account'
                     }
                 }
             }
