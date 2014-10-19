@@ -9,7 +9,7 @@ namespace AngularMetaApp.EntityModel
     public class ChrisSchwanExamplesAuth : IdentityDbContext<IdentityUser>
     {
         public ChrisSchwanExamplesAuth()
-            : base("ChrisSchwanExamplesEntities")
+            : base("ChrisSchwanExamplesAuth")
         {}
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using AngularMetaApp.Providers;
+using AngularMetaApp.EntityModel;
 
 namespace AngularMetaApp
 {
@@ -17,7 +18,7 @@ namespace AngularMetaApp
         {
             PublicClientId = "self";
 
-            UserManagerFactory = () => new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+            UserManagerFactory = () => new UserManager<IdentityUser>(new UserStore<IdentityUser>(new ChrisSchwanExamplesAuth()));
 
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
