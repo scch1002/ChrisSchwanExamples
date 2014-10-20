@@ -20,8 +20,6 @@
             AccountService.registerAccount(newUsername, password, confirmPassword).then(function (data) {
                 $scope.t = data;
             });
-        }
-
-        function 
+        };
     };
 })();

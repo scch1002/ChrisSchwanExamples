@@ -8,7 +8,7 @@
         var $q = common.$q;
 
         var service = {
-            registerUser: registerUser
+            registerAccount: registerAccount
         };
 
         return service;
@@ -22,8 +22,6 @@
             };
 
             return $http.post("/api/Account/Register/", user);
-        }
-
-        function 
-    }
+        };
+    };
 })();

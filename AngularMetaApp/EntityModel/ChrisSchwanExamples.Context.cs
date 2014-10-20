@@ -26,5 +26,7 @@ namespace AngularMetaApp.EntityModel
         }
     
         public virtual DbSet<DropPin> DropPins { get; set; }
+        public virtual DbSet<CheckList> CheckLists { get; set; }
+        public virtual DbSet<CheckListItem> CheckListItems { get; set; }
     }
 }

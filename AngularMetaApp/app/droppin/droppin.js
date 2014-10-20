@@ -26,7 +26,7 @@
             $scope.deleteDropPin = deleteDropPin;
             var promises = [renderDropPins()];
             common.activateController(promises, controllerId);
-        }
+        };
 
         function centerMap(latitude, longitude) {
             var latlng = new google.maps.LatLng(latitude, longitude);

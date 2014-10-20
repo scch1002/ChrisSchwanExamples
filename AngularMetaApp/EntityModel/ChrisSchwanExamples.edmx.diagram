@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8725e7c749eb4526a6a5e0d340b2360f" Name="Diagram1">
         <EntityTypeShape EntityType="ChrisSchwanExamplesModel.DropPin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChrisSchwanExamplesModel.CheckList" Width="1.5" PointX="3.375" PointY="1" />
+        <EntityTypeShape EntityType="ChrisSchwanExamplesModel.CheckListItem" Width="1.5" PointX="5.625" PointY="0.875" />
+        <AssociationConnector Association="ChrisSchwanExamplesModel.FK_CheckList_CheckListItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

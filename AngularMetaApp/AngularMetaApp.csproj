@@ -149,6 +149,8 @@
     <Content Include="app\admin\admin.html" />
     <Content Include="app\admin\admin.js" />
     <Content Include="app\app.js" />
+    <Content Include="app\checklist\checklist.html" />
+    <Content Include="app\checklist\checklist.js" />
     <Content Include="app\common\bootstrap\bootstrap.dialog.js" />
     <Content Include="app\common\common.js" />
     <Content Include="app\common\logger.js" />
@@ -167,6 +169,8 @@
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />
     <Content Include="app\services\AccountService.js" />
+    <Content Include="app\services\CheckListItemService.js" />
+    <Content Include="app\services\CheckListService.js" />
     <Content Include="app\services\datacontext.js" />
     <Content Include="app\services\directives.js" />
     <Content Include="app\services\DropPinService.js" />
@@ -255,7 +259,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CheckListController.cs" />
+    <Compile Include="Controllers\CheckListItemController.cs" />
     <Compile Include="Controllers\DropPinController.cs" />
+    <Compile Include="EntityModel\CheckList.cs">
+      <DependentUpon>ChrisSchwanExamples.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\CheckListItem.cs">
+      <DependentUpon>ChrisSchwanExamples.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\ChrisSchwanExamples.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -5,6 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ChrisSchwanExamplesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CheckList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CheckListName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CheckListItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CheckListId" Type="bigint" Nullable="false" />
+          <Property Name="ItemText" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="DropPins">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,8 +31,26 @@
           <Property Name="Longitude" Type="numeric" Precision="7" Scale="4" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CheckList_CheckListItem">
+          <End Role="CheckList" Type="Self.CheckList" Multiplicity="1" />
+          <End Role="CheckListItem" Type="Self.CheckListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckList">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckListItem">
+              <PropertyRef Name="CheckListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ChrisSchwanExamplesModelStoreContainer">
+          <EntitySet Name="CheckList" EntityType="Self.CheckList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckListItem" EntityType="Self.CheckListItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DropPins" EntityType="Self.DropPins" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CheckList_CheckListItem" Association="Self.FK_CheckList_CheckListItem">
+            <End Role="CheckList" EntitySet="CheckList" />
+            <End Role="CheckListItem" EntitySet="CheckListItem" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -32,7 +67,44 @@
         </EntityType>
         <EntityContainer Name="ChrisSchwanExamplesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DropPins" EntityType="Self.DropPin" />
+          <EntitySet Name="CheckLists" EntityType="ChrisSchwanExamplesModel.CheckList" />
+          <EntitySet Name="CheckListItems" EntityType="ChrisSchwanExamplesModel.CheckListItem" />
+          <AssociationSet Name="FK_CheckList_CheckListItem" Association="ChrisSchwanExamplesModel.FK_CheckList_CheckListItem">
+            <End Role="CheckList" EntitySet="CheckLists" />
+            <End Role="CheckListItem" EntitySet="CheckListItems" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CheckList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckListName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DataAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CheckListItems" Relationship="ChrisSchwanExamplesModel.FK_CheckList_CheckListItem" FromRole="CheckList" ToRole="CheckListItem" />
+        </EntityType>
+        <EntityType Name="CheckListItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckListId" Type="Int64" Nullable="false" />
+          <Property Name="ItemText" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CheckList" Relationship="ChrisSchwanExamplesModel.FK_CheckList_CheckListItem" FromRole="CheckListItem" ToRole="CheckList" />
+        </EntityType>
+        <Association Name="FK_CheckList_CheckListItem">
+          <End Type="ChrisSchwanExamplesModel.CheckList" Role="CheckList" Multiplicity="1" />
+          <End Type="ChrisSchwanExamplesModel.CheckListItem" Role="CheckListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckList">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckListItem">
+              <PropertyRef Name="CheckListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -46,6 +118,25 @@
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckLists">
+            <EntityTypeMapping TypeName="ChrisSchwanExamplesModel.CheckList">
+              <MappingFragment StoreEntitySet="CheckList">
+                <ScalarProperty Name="DataAdded" ColumnName="DataAdded" />
+                <ScalarProperty Name="CheckListName" ColumnName="CheckListName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckListItems">
+            <EntityTypeMapping TypeName="ChrisSchwanExamplesModel.CheckListItem">
+              <MappingFragment StoreEntitySet="CheckListItem">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+                <ScalarProperty Name="CheckListId" ColumnName="CheckListId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
