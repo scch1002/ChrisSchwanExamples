@@ -13,7 +13,7 @@
 
         return service;
 
-        function registerUser(userName, password, confirmPassword) {
+        function registerAccount(userName, password, confirmPassword) {
 
             var user = {
                 UserName: userName,
@@ -23,5 +23,7 @@
 
             return $http.post("/api/Account/Register/", user);
         }
+
+        function 
     }
 })();

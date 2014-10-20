@@ -11,15 +11,17 @@
         activate();
 
         function activate() {
-            $scope.registerUser = registerUser;
+            $scope.registerAccount = registerAccount;
             var promises = [];
             common.activateController(promises, controllerId);
         };
 
-        function registerUser(newUsername, password, confirmPassword) {
-            AccountService.registerUser(newUsername, password, confirmPassword).then(function (data) {
+        function registerAccount(newUsername, password, confirmPassword) {
+            AccountService.registerAccount(newUsername, password, confirmPassword).then(function (data) {
                 $scope.t = data;
             });
         }
+
+        function 
     };
 })();
