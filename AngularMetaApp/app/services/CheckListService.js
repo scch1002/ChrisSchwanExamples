@@ -14,14 +14,18 @@
         return service;
 
         function getCheckLists() {
-            return $http.Get("/api/CheckList");
+            return $http.get("/api/CheckList");
         };
 
-        function addCheckList() {
+        function addCheckList(checkList) {
+            return $http.post("/api/CheckList", {
+                CheckListName: checkList.CheckListName,
+                DateAdded: new Date.now()
+            });
         };
 
         function deleteCheckList() {
-
+            return $http.delete("/api/CheckList");
         };
     };
 })();

@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CheckListName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="DataAdded" Type="datetime" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="CheckListItem">
           <Key>
@@ -80,8 +80,8 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CheckListName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DataAdded" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CheckListItems" Relationship="ChrisSchwanExamplesModel.FK_CheckList_CheckListItem" FromRole="CheckList" ToRole="CheckListItem" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="CheckListItem">
           <Key>
@@ -124,7 +124,7 @@
           <EntitySetMapping Name="CheckLists">
             <EntityTypeMapping TypeName="ChrisSchwanExamplesModel.CheckList">
               <MappingFragment StoreEntitySet="CheckList">
-                <ScalarProperty Name="DataAdded" ColumnName="DataAdded" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="CheckListName" ColumnName="CheckListName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

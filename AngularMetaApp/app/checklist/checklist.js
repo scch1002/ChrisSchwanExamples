@@ -1,28 +1,40 @@
 ﻿(function () {
     'use strict';
-    var controllerId = 'droppinCtrl';
+    var controllerId = 'CheckListCtrl';
     angular.module('app')
-        .controller(controllerId, ['common', 'dropPinService', '$scope', droppin]);
+        .controller(controllerId, ['common', 'CheckListService', '$scope', checkList]);
 
-    function droppin(common, dropPinService, $scope) {
+    function checkList(common, CheckListService, $scope) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
-
-        var mapOptions = {
-            center: { lat: 0, lng: 0 },
-            zoom: 3
-        };
-
-        $scope.map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
 
         activate();
 
         function activate() {
-            var promises = [];
+            $scope.deleteCheckList = deleteCheckList;
+            var promises = [getCheckLists()];
             common.activateController(promises, controllerId);
         };
 
+        function getCheckLists() {
+            return CheckListService.getCheckLists().then(function (data) {
+                $scope.checkLists = data.data;
+            });
+        };
 
+        function addCheckList(checkList) {
+            CheckListService.addCheckList(checkList).then(function (data) {
+                getCheckLists();
+            });
+        };
+
+        function updateCheckList(checkList) {
+        };
+
+        function deleteCheckList(id) {
+            CheckListService.deleteCheckList(id).then(function (data) {
+                getCheckLists();
+            });
+        }
     };
 })();

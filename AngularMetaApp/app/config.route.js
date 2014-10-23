@@ -61,6 +61,17 @@
                         content: '<i class="glyphicon glyphicon-globe"></i> Account'
                     }
                 }
+            },
+            {
+                url: '/checklist',
+                config: {
+                    title: 'Check List',
+                    templateUrl: 'app/checklist/checklist.html',
+                    settings: {
+                        nav: 5,
+                        content: '<i class="glyphicon glyphicon-globe"></i> Check List'
+                    }
+                }
             }
         ];
     }

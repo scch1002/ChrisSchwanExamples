@@ -21,7 +21,7 @@ namespace AngularMetaApp.EntityModel
     
         public long Id { get; set; }
         public string CheckListName { get; set; }
-        public System.DateTime DataAdded { get; set; }
+        public System.DateTime DateAdded { get; set; }
     
         public virtual ICollection<CheckListItem> CheckListItems { get; set; }
     }
