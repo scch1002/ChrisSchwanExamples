@@ -69,7 +69,7 @@
                     templateUrl: 'app/checklist/checklist.html',
                     settings: {
                         nav: 5,
-                        content: '<i class="glyphicon glyphicon-globe"></i> Check List'
+                        content: '<i class="glyphicon glyphicon-ok"></i> Check List'
                     }
                 }
             },
