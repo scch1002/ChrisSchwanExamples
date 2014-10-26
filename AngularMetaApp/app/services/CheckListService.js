@@ -9,6 +9,7 @@
 
         var service = {
             getCheckLists: getCheckLists,
+            getCheckList: getCheckList,
             addCheckList: addCheckList,
             updateCheckList: updateCheckList,
             deleteCheckList: deleteCheckList
@@ -19,6 +20,10 @@
         function getCheckLists() {
             return $http.get("/api/CheckList");
         };
+
+        function getCheckList(id) {
+            return $http.get("/api/CheckList/" + id);
+        }
 
         function addCheckList(checkList) {
             return $http.post("/api/CheckList", {

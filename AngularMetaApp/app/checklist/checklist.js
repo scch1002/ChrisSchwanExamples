@@ -37,7 +37,7 @@
         };
 
         function deleteCheckList(id) {
-            CheckListService.deleteCheckList(id).then(function (data) {
+            return CheckListService.deleteCheckList(id).then(function (data) {
                 getCheckLists();
             });
         }

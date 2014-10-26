@@ -2,9 +2,9 @@
     'use strict';
     var controllerId = 'CheckListItemCtrl';
     angular.module('app')
-        .controller(controllerId, ['common', 'CheckListItemService', '$routeParams', '$scope', checkListItem]);
+        .controller(controllerId, ['common', 'CheckListService', 'CheckListItemService', '$routeParams', '$scope', checkListItem]);
 
-    function checkListItem(common, CheckListItemService, $routeParams, $scope) {
+    function checkListItem(common, CheckListService, CheckListItemService, $routeParams, $scope) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 
@@ -15,9 +15,15 @@
             $scope.addCheckListItem = addCheckListItem;
             $scope.updateCheckListItem = updateCheckListItem;
             $scope.deleteCheckListItem = deleteCheckListItem;
-            var promises = [getCheckListItems($scope.checkListId)];
+            var promises = [getCheckListItems($scope.checkListId), getCheckListDetails($scope.checkListId)];
             common.activateController(promises, controllerId);
         };
+
+        function getCheckListDetails(id) {
+            return CheckListService.getCheckList(id).then(function (data) {
+                $scope.checkList = data.data;
+            });
+        }
 
         function getCheckListItems(id) {
             return CheckListItemService.getCheckListItems(id).then(function (data) {
