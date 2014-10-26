@@ -32,7 +32,7 @@
             return $http.put("/api/CheckListItem/" + checkListItem.Id, {
                 Id: checkListItem.Id,
                 CheckListId: checkListItem.CheckListId,
-                ItemText: checkListItem.CheckListName,
+                ItemText: checkListItem.ItemText,
                 DateAdded: checkListItem.DateAdded
             });
         };

@@ -16,6 +16,11 @@ namespace AngularMetaApp.Controllers
     {
         private ChrisSchwanExamplesEntities db = new ChrisSchwanExamplesEntities();
 
+        public CheckListItemController()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+        }
+
         // GET api/CheckListItem
         public IQueryable<CheckListItem> GetCheckListItems(long id)
         {

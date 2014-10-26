@@ -1,5 +1,6 @@
 ﻿<section id="checklistitem-view" class="mainbar" data-ng-controller="CheckListItemCtrl">
     <h1>Check Lists</h1>
+    <a class="btn btn-primary" href="#/checklist">Back To Check Lists</a>
     <tabset>
         <tab heading="View">
             <table class="table">
@@ -14,9 +15,6 @@
                     </td>
                     <td>
                         {{ item.DateAdded }}
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" ng-click="deleteCheckListItem(item.Id)">View Check List</button>
                     </td>
                 </tr>
             </table>
@@ -50,8 +48,8 @@
                         {{ item.DateAdded }}
                     </td>
                     <td>
-                        <button class="btn btn-danger" ng-click="deleteCheckList(item.Id)">Delete</button>
-                        <form ng-submit="updateCheckList(item)">
+                        <button class="btn btn-danger" ng-click="deleteCheckListItem(item.Id)">Delete</button>
+                        <form ng-submit="updateCheckListItem(item)">
                             <input type="hidden" value="item.Id" />
                             <input type="hidden" value="item.ItemText" />
                             <input type="hidden" value="item.DateAdded" />
