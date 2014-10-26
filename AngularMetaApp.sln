@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularMetaApp", "AngularMetaApp\AngularMetaApp.csproj", "{2301FE67-42DC-4FD5-8CF3-1541DD8328E8}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ChrisSchwanExamplesDatabase", "ChrisSchwanExamplesDatabase\ChrisSchwanExamplesDatabase.sqlproj", "{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{2301FE67-42DC-4FD5-8CF3-1541DD8328E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2301FE67-42DC-4FD5-8CF3-1541DD8328E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2301FE67-42DC-4FD5-8CF3-1541DD8328E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4EEB465-C2C3-4E37-B578-7C054D5F3E06}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,7 +14,6 @@
             $scope.addCheckList = addCheckList;
             $scope.updateCheckList = updateCheckList;
             $scope.deleteCheckList = deleteCheckList;
-            $scope.viewCheckList = viewCheckList;
             var promises = [getCheckLists()];
             common.activateController(promises, controllerId);
         };
@@ -41,10 +40,6 @@
             CheckListService.deleteCheckList(id).then(function (data) {
                 getCheckLists();
             });
-        }
-
-        function viewCheckList(id) {
-            $location.path("/checklistitem/" + id);
         }
     };
 })();
