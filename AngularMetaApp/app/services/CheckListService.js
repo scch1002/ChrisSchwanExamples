@@ -8,7 +8,10 @@
         var $q = common.$q;
 
         var service = {
-            getCheckLists: getCheckLists
+            getCheckLists: getCheckLists,
+            addCheckList: addCheckList,
+            updateCheckList: updateCheckList,
+            deleteCheckList: deleteCheckList
         };
 
         return service;
@@ -20,12 +23,20 @@
         function addCheckList(checkList) {
             return $http.post("/api/CheckList", {
                 CheckListName: checkList.CheckListName,
-                DateAdded: new Date.now()
+                DateAdded: new Date().toISOString()
             });
         };
 
-        function deleteCheckList() {
-            return $http.delete("/api/CheckList");
+        function updateCheckList(checkList) {
+            return $http.put("/api/CheckList/" + checkList.Id, {
+                Id: checkList.Id,
+                CheckListName: checkList.CheckListName,
+                DateAdded: checkList.DateAdded
+            });
+        };
+
+        function deleteCheckList(id) {
+            return $http.delete("/api/CheckList/" + id);
         };
     };
 })();

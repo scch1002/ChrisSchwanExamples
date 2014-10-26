@@ -72,6 +72,13 @@
                         content: '<i class="glyphicon glyphicon-globe"></i> Check List'
                     }
                 }
+            },
+            {
+                url: '/checklistitem/:Id',
+                config: {
+                    title: 'Check List Item',
+                    templateUrl: 'app/checklist/checklistitem.html',
+                }
             }
         ];
     }

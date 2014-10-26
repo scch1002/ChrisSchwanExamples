@@ -1,50 +1,50 @@
-﻿<section id="checklist-view" class="mainbar" data-ng-controller="CheckListCtrl">
+﻿<section id="checklistitem-view" class="mainbar" data-ng-controller="CheckListItemCtrl">
     <h1>Check Lists</h1>
     <tabset>
         <tab heading="View">
             <table class="table">
                 <tr>
-                    <th>Check List Name</th>
+                    <th>Item</th>
                     <th>Date Added</th>
                     <th></th>
                 </tr>
-                <tr ng-repeat="item in checkLists">
+                <tr ng-repeat="item in checkListItems">
                     <td>
-                        {{ item.CheckListName }}
+                        {{ item.ItemText }}
                     </td>
                     <td>
                         {{ item.DateAdded }}
                     </td>
                     <td>
-                        <a class="btn btn-primary" ng-href="#/checklistitem/{{item.Id}}">View Check List</a> 
+                        <button class="btn btn-primary" ng-click="deleteCheckListItem(item.Id)">View Check List</button>
                     </td>
                 </tr>
             </table>
         </tab>
         <tab heading="Edit">
             <h3>Create Check List</h3>
-            <form class="form form-horizontal" role="form" ng-submit="addCheckList(checkList)">
+            <form class="form form-horizontal" role="form" ng-submit="addCheckListItem(checkListItem)">
                 <div class="form-group">
-                    <label for="inputDropPinTitle" class="col-sm-2 control-label">Check List Name:</label>
+                    <label for="inputDropPinTitle" class="col-sm-2 control-label">Check List Item:</label>
                     <div class="col-sm-10">
-                        <input id="inputDropPinTitle" class="form-control" type="text" required ng-model="checkList.CheckListName" />
+                        <input id="inputDropPinTitle" class="form-control" type="text" required ng-model="checkListItem.ItemText" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" class="btn btn-primary" value="Create Check List" />
+                        <input type="submit" class="btn btn-primary" value="Create Check List Item" />
                     </div>
                 </div>
             </form>
             <table class="table">
                 <tr>
-                    <th>Check List Name</th>
+                    <th>Check List Item</th>
                     <th>Date Added</th>
                     <th></th>
                 </tr>
-                <tr ng-repeat="item in checkLists">
+                <tr ng-repeat="item in checkListItems">
                     <td>
-                        <input type="text" ng-model="item.CheckListName" />
+                        <input type="text" ng-model="item.ItemText" />
                     </td>
                     <td>
                         {{ item.DateAdded }}
@@ -53,7 +53,7 @@
                         <button class="btn btn-danger" ng-click="deleteCheckList(item.Id)">Delete</button>
                         <form ng-submit="updateCheckList(item)">
                             <input type="hidden" value="item.Id" />
-                            <input type="hidden" value="item.CheckListName" />
+                            <input type="hidden" value="item.ItemText" />
                             <input type="hidden" value="item.DateAdded" />
                             <input type="submit" class="btn btn-info" value="Update" />
                         </form>

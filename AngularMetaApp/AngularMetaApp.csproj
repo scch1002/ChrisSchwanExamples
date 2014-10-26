@@ -151,6 +151,8 @@
     <Content Include="app\app.js" />
     <Content Include="app\checklist\checklist.html" />
     <Content Include="app\checklist\checklist.js" />
+    <Content Include="app\checklist\checklistitem.html" />
+    <Content Include="app\checklist\checklistitem.js" />
     <Content Include="app\common\bootstrap\bootstrap.dialog.js" />
     <Content Include="app\common\common.js" />
     <Content Include="app\common\logger.js" />
